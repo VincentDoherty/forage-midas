@@ -2,8 +2,16 @@ package com.jpmc.midascore.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class UserRecord {
+
+    @OneToMany(mappedBy = "sender")
+    private List<TransactionRecord> sentTransactions;
+
+    @OneToMany(mappedBy = "recipient")
+    private List<TransactionRecord> receivedTransactions;
 
     @Id
     @GeneratedValue()
